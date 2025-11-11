@@ -1,0 +1,32 @@
+
+
+services:
+  api_gateway:
+    build: ./api_gateway
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - JWT_SECRET=supersecret
+      - USERS_SERVICE_URL=http://service_users:3001
+      - ORDERS_SERVICE_URL=http://service_orders:3002
+    depends_on:
+      - service_users
+      - service_orders
+
+  service_users:
+    build: ./service_users
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - JWT_SECRET=supersecret
+
+  service_orders:
+    build: ./service_orders
+    ports:
+      - "3002:3002"
+    environment:
+      - PORT=3002
+      - USERS_SERVICE_URL=http://service_users:3001
+      - JWT_SECRET=supersecret
