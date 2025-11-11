@@ -1,0 +1,18 @@
+{
+  "name": "service_orders",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18",
+    "zod": "^3.22",
+    "pino": "^8.17",
+    "pino-http": "^8.6",
+    "uuid": "^9.0",
+    "cors": "^2.8",
+    "helmet": "^7.1",
+    "axios": "^1.6"
+  }
+}
